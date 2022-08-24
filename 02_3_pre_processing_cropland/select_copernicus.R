@@ -13,16 +13,12 @@ source(here::here("01_model_setup/01_model_setup.r"))
 load_data(c("adm_map", "grid"), param)
 
 
-# NOTE -----------------------------------------------------------------------------------
-# We use the copernicus_2019 land cover map as input because a 2015 map is not available.
-
-
 # PROCESS --------------------------------------------------------------------------------
 temp_path <- file.path(param$model_path, glue("processed_data/maps/cropland/{param$res}"))
 dir.create(temp_path, showWarnings = FALSE, recursive = TRUE)
 
 # Warp and mask
-input <- file.path(param$db_path, glue("copernicus/copernicus_2019.tif"))
+input <- file.path(param$db_path, glue("copernicus/copernicus_2015.tif"))
 output <- align_raster(input, grid, adm_map, method = "bilinear")
 names(output) <- "copernicus"
 plot(output)
