@@ -36,31 +36,31 @@ model_path <- "C:/Users/dijk158/OneDrive - Wageningen University & Research/data
 db_path <- "c:/temp"
 
 # Sets the location of the version of GAMS that will be used to solve the model
-gams_path <- "C:/MyPrograms/GAMS/win64/24.6"
+gams_path <- "C:/MyPrograms/GAMS/35"
 
 # Set mapspamc parameters for the min_entropy_5min_adm_level_2_solve_level_0 model
-# param <- mapspamc_par(
-#   model_path = model_path,
-#   db_path = db_path,
-#   gams_path = gams_path,
-#   iso3c = "ETH",
-#   year = 2015,
-#   res = "5min",
-#   adm_level = 2,
-#   solve_level = 1,
-#   model = "min_entropy")
-
-# # Set mapspamc parameters for the max_score_30sec_adm_level_2_solve_level_0 model
 param <- mapspamc_par(
   model_path = model_path,
   db_path = db_path,
   gams_path = gams_path,
   iso3c = "ETH",
   year = 2015,
-  res = "30sec",
+  res = "5min",
   adm_level = 2,
   solve_level = 1,
-  model = "max_score")
+  model = "min_entropy")
+
+# # Set mapspamc parameters for the max_score_30sec_adm_level_2_solve_level_0 model
+# param <- mapspamc_par(
+#   model_path = model_path,
+#   db_path = db_path,
+#   gams_path = gams_path,
+#   iso3c = "ETH",
+#   year = 2015,
+#   res = "30sec",
+#   adm_level = 2,
+#   solve_level = 1,
+#   model = "max_score")
 
 
 # Show parameters
