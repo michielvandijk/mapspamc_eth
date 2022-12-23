@@ -1,6 +1,6 @@
 #'========================================================================================================================================
 #' Project:  mapspamc
-#' Subject:  Code to select ESRI cropland map
+#' Subject:  Code to select MODIS cropland map
 #' Author:   Michiel van Dijk
 #' Contact:  michiel.vandijk@wur.nl
 #'========================================================================================================================================
@@ -19,11 +19,11 @@ dir.create(temp_path, showWarnings = FALSE, recursive = TRUE)
 
 # Warp and mask
 # If needed change the year of the cropland map
-input <- file.path(param$db_path, glue("esri/esri_2020.tif"))
+input <- file.path(param$db_path, glue("modis/modis_2015.tif"))
 output <- align_raster(input, grid, adm_map, method = "bilinear")
-names(output) <- "esri"
+names(output) <- "modis"
 plot(output)
-writeRaster(output, file.path(temp_path, glue("cropland_esri_{param$res}_{param$year}_{param$iso3c}.tif")),
+writeRaster(output, file.path(temp_path, glue("cropland_modis_{param$res}_{param$year}_{param$iso3c}.tif")),
             overwrite = TRUE)
 
 
