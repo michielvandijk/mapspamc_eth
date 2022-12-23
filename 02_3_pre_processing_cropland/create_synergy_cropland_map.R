@@ -13,14 +13,14 @@ source(here::here("01_model_setup/01_model_setup.r"))
 load_data(c("adm_map", "grid"), param)
 
 # cropland from different sources
-esri <- rast(file.path(param$model_path,
-                       glue("processed_data/maps/cropland/{param$res}/cropland_esri_{param$res}_{param$year}_{param$iso3c}.tif")))
 glad <- rast(file.path(param$model_path,
-                       glue("processed_data/maps/cropland/{param$res}/cropland_glad_{param$res}_{param$year}_{param$iso3c}.tif")))
+                  glue("processed_data/maps/cropland/{param$res}/cropland_glad_{param$res}_{param$year}_{param$iso3c}.tif")))
 esacci <- rast(file.path(param$model_path,
-                         glue("processed_data/maps/cropland/{param$res}/cropland_esacci_{param$res}_{param$year}_{param$iso3c}.tif")))
+                  glue("processed_data/maps/cropland/{param$res}/cropland_esacci_{param$res}_{param$year}_{param$iso3c}.tif")))
 copernicus <- rast(file.path(param$model_path,
-                             glue("processed_data/maps/cropland/{param$res}/cropland_copernicus_{param$res}_{param$year}_{param$iso3c}.tif")))
+                  glue("processed_data/maps/cropland/{param$res}/cropland_copernicus_{param$res}_{param$year}_{param$iso3c}.tif")))
+modis <- rast(file.path(param$model_path,
+                  glue("processed_data/maps/cropland/{param$res}/cropland_modis_{param$res}_{param$year}_{param$iso3c}.tif")))
 
 # Rank table
 st_raw <- read_excel(file.path(param$db_path,
@@ -30,7 +30,7 @@ st_raw <- read_excel(file.path(param$db_path,
 
 # PROCESS --------------------------------------------------------------------------------
 # Combine rasters
-cl_df <- c(esacci, esri, glad, copernicus)
+cl_df <- c(esacci, modis, glad, copernicus)
 cl_df <- as.data.frame(cl_df, xy=TRUE)
 
 # Add grid_id, put in long format, calculate area and remove zeros
@@ -58,7 +58,7 @@ table(st$code)
 # which is not the case for pivot_wider and pivot_longer.
 cl_code <- cl_df %>%
   mutate(code = source,
-         source = factor(source, levels = c("esri", "glad", "copernicus", "esacci"))) %>%
+         source = factor(source, levels = c("glad", "copernicus", "esacci", "modis"))) %>%
   dplyr::select(-area) %>%
   spread(source, code, fill = "0") %>%
   gather(source, code, -c(grid_id, x, y)) %>%
@@ -123,5 +123,5 @@ writeRaster(cl_rank, file.path(param$model_path,
 
 # CLEAN UP -------------------------------------------------------------------------------
 rm(adm_map, cl, cl_area, cl_code, cl_df, cl_max, cl_rank, cl_syn_df,
-   copernicus, esacci, esri, glad, grid, r_area, st, st_raw)
+   copernicus, esacci, modis, glad, grid, r_area, st, st_raw)
 
