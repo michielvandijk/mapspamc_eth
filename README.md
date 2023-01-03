@@ -7,30 +7,39 @@ This repository contains the scripts to create crop distribution maps
 with the [`mapspamc`](https://github.com/michielvandijk/mapspamc) R
 package for Ethiopia, covering the year 2015. To run the scripts, the
 user needs to install `mapspamc` and download the [mapspamc
-database](ADD%20link), which includes all the required input data,
-including subnational crop statistics for Malawi as well as global maps.
-Note that the (subnational) statistics were modified for illustrative
-purposes. Please use the latest version of the SPAM database (Yu et al.
-2020) when presenting crop distribution maps for Ethiopia.
+database](https://doi.org/10.5281/zenodo.7031917), which includes all
+the required input data, including subnational crop statistics for
+Malawi as well as global maps. Note that the (subnational) statistics
+were modified for illustrative purposes. Please use the latest version
+of the SPAM database (Yu et al. 2020) when presenting crop distribution
+maps for Ethiopia.
 
 Detailed information on how to install the package and run the Ethiopia
 case-study is provided in the articles of the `mapspamc` [package
-website](https://michielvandijk.github.io/mapspamc/). Additional
-information is available in a scientific journal article (Dijk et al.
-2022). Please cite this article if you use the `mapspamc`package.
+website](https://michielvandijk.github.io/mapspamc/).
+
+<!-- Additional information is available in a scientific journal article [@VanDijk2022b]. Please cite this article if you use the `mapspamc`package. -->
+
+Note that it might take several hours to run the model, in particular
+when a resolution of 30 arc seconds is selected. The table below
+compares the time it took the solve the different models using a machine
+with an Intel(R) Xeon(R) E-2276M CPU @ 2.81 GHz and 32 GB RAM.
+
+|                                              | Cross-entropy        | Fitness score        |
+|----------------------------------------------|----------------------|----------------------|
+| Resolution                                   | 5 arc minutes        | 30 arc seconds       |
+| Solve level                                  | 1                    | 1                    |
+| Number of crops                              | 32                   | 32                   |
+| Number of production systems x crops         | 111                  | 111                  |
+| Number of administrative units               | 10 (ADM1), 62 (ADM2) | 10 (ADM1), 62 (ADM2) |
+| Number of crops with subnational information | 31                   | 31                   |
+| Number of cropland cells                     |                      |                      |
+| Running time                                 | 628 sec              | 18,424 sec           |
+| Solver                                       | IPOPT                | CPLEX                |
 
 ## References
 
 <div id="refs" class="references csl-bib-body hanging-indent">
-
-<div id="ref-VanDijk2022b" class="csl-entry">
-
-Dijk, Michiel van, Ulrike Wood-Sichra, Yating Ru, Amanda Palazzo, Petr
-Havlik, and Liangzhi You. 2022. “<span class="nocase">Generating
-multi-period crop distribution maps for Southern Africa using a data
-fusion approach</span>.”
-
-</div>
 
 <div id="ref-Yu2020" class="csl-entry">
 
