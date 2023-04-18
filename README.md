@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# mapspamc_mwi
+# mapspamc_eth
 
 This repository contains the scripts to create crop distribution maps
 with the [`mapspamc`](https://github.com/michielvandijk/mapspamc) R
@@ -20,10 +20,10 @@ website](https://michielvandijk.github.io/mapspamc/).
 
 <!-- Additional information is available in a scientific journal article [@VanDijk2022b]. Please cite this article if you use the `mapspamc`package. -->
 
-Note that it might take several hours to run the model, in particular
+Note that it takes up to several hours to run the models, in particular
 when a resolution of 30 arc seconds is selected. The table below
-compares the time it took the solve the different models using a machine
-with an Intel(R) Xeon(R) E-2276M CPU @ 2.81 GHz and 32 GB RAM.
+presents the model dimensions and model running time using a machine
+with an Intel(R) Xeon(R) E-2276M CPU @ 2.81 GHz processor and 32 GB RAM.
 
 |                                              | Cross-entropy        | Fitness score        |
 |----------------------------------------------|----------------------|----------------------|
@@ -33,7 +33,7 @@ with an Intel(R) Xeon(R) E-2276M CPU @ 2.81 GHz and 32 GB RAM.
 | Number of production systems x crops         | 111                  | 111                  |
 | Number of administrative units               | 10 (ADM1), 62 (ADM2) | 10 (ADM1), 62 (ADM2) |
 | Number of crops with subnational information | 31                   | 31                   |
-| Number of cropland cells                     |                      |                      |
+| Number of cropland cells                     | 4,980                | 349,524              |
 | Running time                                 | 628 sec              | 18,424 sec           |
 | Solver                                       | IPOPT                | CPLEX                |
 

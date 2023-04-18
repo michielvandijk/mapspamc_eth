@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# mapspamc_mwi
+# mapspamc_eth
 
 This repository contains the scripts to create crop distribution maps with the [`mapspamc`](https://github.com/michielvandijk/mapspamc) R package for Ethiopia, covering the year 2015. To run the scripts, the user needs to install `mapspamc` and download the [mapspamc database](https://doi.org/10.5281/zenodo.7031917), which includes all the required input data, including subnational crop statistics for Malawi as well as global maps. Note that the (subnational) statistics were modified for illustrative purposes. Please use the latest version of the SPAM database [@Yu2020] when presenting crop distribution maps for Ethiopia.
 
